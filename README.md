@@ -45,3 +45,8 @@ unicycler -l longname.fastq -o longname_uni_long/
 
 Input: All ```.fastq``` or ```fastq.gz``` in current directory. If ```filtlong/``` in directory, will search sequences inside
 Output: Folder(s) in current directory. If there is a ```filtlong/``` directory, results will be in that directory
+
+If you wish to run a hybrid assembly (combining both long and short reads), run the following:
+```
+unicycler -l longname.fastq -1 shortname_1.fastq -2 shortname.fastq -o uni_hybrid/
+```

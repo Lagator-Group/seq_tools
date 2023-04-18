@@ -33,9 +33,9 @@ class unicycler:
                 _name=_1.replace('.fastq','')
             print(_name)
             if len(filtlong)>0:
-                unicycler='unicycler -1 '+_1+' -2 '+_2+' -o ../'+_name+'_uni_short/'
+                unicycler='unicycler -1 '+_1+' -2 '+_2+' -o ../'+n+'uni_short/'
             else:
-                unicycler='unicycler -1 '+_1+' -2 '+_2+' -o '+_name+'_uni_short/'
+                unicycler='unicycler -1 '+_1+' -2 '+_2+' -o '+n+'uni_short/'
             subprocess.call(unicycler,shell=True)
             n=n+1
             print(n,'/',_n,' done')
@@ -50,23 +50,27 @@ class unicycler:
                 _name=str(seq.replace('.fastq',''))
             print(_name)
             if len(filtlong)>0:
-                unicycler='unicycler -l '+seq+' -o ../'+_name+'_uni_long/'
+                unicycler='unicycler -l '+seq+' -o ../'+n+'uni_long/'
             else:
-                unicycler='unicycler -l '+seq+' -o '+_name+'_uni_long/'
+                unicycler='unicycler -l '+seq+' -o '+n+'uni_long/'
             subprocess.call(unicycler,shell=True)
             n=n+1
             print(n,'/',_n,' done')
         
     def hybrid(short_list,long_list):
-        _1=str(short_list[0])
-        _2=str(_1.replace('_1.fastq','_2.fastq')) #assumes there is a corresponding _2 in folder
-        _long=long_list[0]
+        n=0
+        _n=len(long_list)
+        while n<_n:
+            _1=str(short_list[n])
+            _2=str(_1.replace('_1.fastq','_2.fastq')) #assumes there is a corresponding _2 in folder
+            _long=long_list[n]
 
-        if len(filtlong)>0:
-            unicycler='unicycler -1 '+_1+' -2 '+_2+' -l '+_long+' -o ../uni_hybrid/'
-        else:
-            unicycler='unicycler -1 '+_1+' -2 '+_2+' -l '+_long+' -o uni_hybrid/'
-        subprocess.call(unicycler,shell=True)
+            if len(filtlong)>0:
+                unicycler='unicycler -1 '+_1+' -2 '+_2+' -l '+_long+' -o ../'+n+'uni_hybrid/'
+            else:
+                unicycler='unicycler -1 '+_1+' -2 '+_2+' -l '+_long+' -o '+n+'uni_hybrid/'
+            subprocess.call(unicycler,shell=True)
+            n=n+1
 
 def main():
     short_list=[]
@@ -80,7 +84,7 @@ def main():
         elif (seq.endswith('.fastq') or seq.endswith('fastq.gz')) and '_2.fastq' not in str(seq): #assumes all remaining sequences without _2 are long-reads
             long_list.append(seq) #adds long-reads to list
 
-    if len(short_list)==1 and len(long_list)==1: #will only run hybrid assembly if there are exactly 1 long and 2 short reads
+    if len(short_list)==len(long_list): #will only run hybrid assembly if there are exactly 2x number of shorts than long reads
         unicycler.hybrid(short_list,long_list)
     else:
         if len(short_list)>0:

@@ -27,14 +27,16 @@ def main():
     for seq in os.listdir(): 
         if seq.endswith('.fastq') or seq.endswith('fastq.gz') and '_2' not in seq and '_1' not in seq: #ensure no short reads are added to list
             long_list.append(seq) #adds long-reads to list
-
-    if len(long_list)>0:
-        for seq in long_list:
-            if filtlong==True:
-                flye='flye -o ../flye --nano-raw '+seq+' -t 8'
-            else:
-                flye='flye -o flye --nano-raw '+seq+' -t 8'
-            subprocess.call(flye,shell=True)                
+    n=0
+    _n=len(long_list)
+    while n<_n:
+        seq=long_list[n]
+        if filtlong==True:
+            flye='flye -o ../'+n+'flye --nano-raw '+seq+' -t 8'
+        else:
+            flye='flye -o '+n+'flye --nano-raw '+seq+' -t 8'
+        subprocess.call(flye,shell=True)                
+        n=n+1
 
 if __name__ == "__main__":
     main()

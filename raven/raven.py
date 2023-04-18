@@ -25,20 +25,21 @@ def main():
         filtlong=True
         os.chdir('filtlong') #makes filtlong/ current working directory
     for seq in os.listdir(): 
-        if seq.endswith('.fastq') or seq.endswith('fastq.gz') and '_2' not in seq and '_1' not in seq: #ensure no short reads are added to list
+        if (seq.endswith('.fastq') or seq.endswith('fastq.gz')) and '_2' not in seq and '_1' not in seq: #ensure no short reads are added to list
             long_list.append(seq) #adds long-reads to list
 
-    if len(long_list)>0:
-        for seq in long_list:
-            if filtlong==True:
-                mkdir='mkdir ../raven'
-                subprocess.call(mkdir,shell=True) 
-                raven='raven --threads 8 '+seq+' > ../raven/assembly.fasta'
-            else:
-                mkdir='mkdir raven'
-                subprocess.call(mkdir,shell=True) 
-                raven='raven --threads 8 '+seq+' > raven/assembly.fasta'
-            subprocess.call(raven,shell=True)                
+    n=0
+    _n=len(long_list)
+    while n<_n:
+        if filtlong==True:
+            mkdir='mkdir ../'+n+'raven'
+            raven='raven --threads 8 '+seq+' > ../'+n+'raven/assembly.fasta'
+        else:
+            mkdir='mkdir '+n+'raven'
+            raven='raven --threads 8 '+seq+' > '+n+'raven/assembly.fasta'
+        subprocess.call(mkdir,shell=True)
+        subprocess.call(raven,shell=True)
+        n=n+1             
 
 if __name__ == "__main__":
     main()

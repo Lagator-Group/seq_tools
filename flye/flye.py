@@ -31,9 +31,9 @@ def main():
     if len(long_list)>0:
         for seq in long_list:
             if filtlong==True:
-                flye='flye -o ../flye --nano-raw '+seq
+                flye='flye -o ../flye --nano-raw -t 8'+seq
             else:
-                flye='flye -o flye --nano-raw '+seq
+                flye='flye -o flye --nano-raw -t 8'+seq
             subprocess.call(flye,shell=True)                
 
 if __name__ == "__main__":

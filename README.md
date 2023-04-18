@@ -19,7 +19,7 @@ To use if you have many sequences if in directory you wish to use filtlong on.
 Run ```python3 ../path/to/filtlong_all.py``` in the directory containing ```.fastq``` files.
 Runs the following line of code for all .fastq files in directory:
 ```
-filtlong --min_length 1000 --keep_percent 95 --target_bases 500000000 SEQ.fastq | gzip > filtlong_out/SEQ.fastq.gz'
+filtlong --min_length 1000 --keep_percent 95 --target_bases 500000000 SEQ.fastq | gzip > filtlong/SEQ.fastq.gz'
 ```
 
 Input: All ```.fastq``` files in current directory. Output: ```fastq.gz``` in ```filtlong/``` directory

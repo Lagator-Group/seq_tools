@@ -22,7 +22,7 @@ Runs the following line of code for all .fastq files in directory:
 filtlong --min_length 1000 --keep_percent 95 --target_bases 500000000 SEQ.fastq | gzip > filtlong_out/SEQ.fastq.gz'
 ```
 
-Input: All ```.fastq``` files in current directory. Output: ```fastq.gz``` in ```filtlong_out/``` directory
+Input: All ```.fastq``` files in current directory. Output: ```fastq.gz``` in ```filtlong/``` directory
 
 ### [Unicycler](https://github.com/rrwick/Unicycler)
 To install, run ```conda install -c bioconda unicycler```.
@@ -43,10 +43,17 @@ Long reads will execute the following command:
 unicycler -l longname.fastq -o longname_uni_long/
 ```
 
-Input: All ```.fastq``` or ```fastq.gz``` in current directory. If ```filtlong/``` in directory, will search sequences inside
-Output: Folder(s) in current directory. If there is a ```filtlong/``` directory, results will be in that directory
+If there are EXACTLY 2 short reads and 1 long read, will perform hybrid assembly instead:
+```
+unicycler -1 short_1.fastq -2 short_2.fastq -l long.fastq -o uni_hybrid/
+```
 
-If you wish to run a hybrid assembly (combining both long and short reads), run the following:
+Input: All ```.fastq``` or ```fastq.gz``` in current directory. If ```filtlong/``` in directory, will search sequences inside
+Output: Folder(s) in current directory.
 ```
 unicycler -l longname.fastq -1 shortname_1.fastq -2 shortname.fastq -o uni_hybrid/
 ```
+
+### [Flye](https://github.com/fenderglass/Flye/)
+To install, run ```conda install -c bioconda flye```.
+

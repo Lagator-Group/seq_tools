@@ -4,15 +4,15 @@ import subprocess
 import os
 
 '''
-Require flye to be installed and mapped to PATH to function
+Requires raven to be installed and mapped to PATH to function
 Requires python3 to be installed and mapped to PATH to function
 Will ONLY work on long reads. Will automatically ignore short reads.
 Assumes you are running on raw nanopore reads
-<https://anaconda.org/bioconda/flye>
-<https://github.com/fenderglass/Flye/>
+<https://anaconda.org/bioconda/raven-assembler>
+<https://github.com/lbcb-sci/raven>
 
 ##Instructions for use
-Run 'python3 ../path/to/flye.py' in directory containing .fastq or filtlong/
+Run 'python3 ../path/to/raven.py' in directory containing .fastq or filtlong/
 For long read, '_' cannot be in file name
 
 Input: All .fastq or fastq.gz in current directory. If filtlong/ in directory, will search sequences inside
@@ -31,10 +31,14 @@ def main():
     if len(long_list)>0:
         for seq in long_list:
             if filtlong==True:
-                flye='flye -o ../flye --nano-raw '+seq+' -t 8'
+                mkdir='mkdir ../raven'
+                subprocess.call(mkdir,shell=True) 
+                raven='raven --threads 8 '+seq+' > ../raven/assembly.fasta'
             else:
-                flye='flye -o flye --nano-raw '+seq+' -t 8'
-            subprocess.call(flye,shell=True)                
+                mkdir='mkdir raven'
+                subprocess.call(mkdir,shell=True) 
+                raven='raven --threads 8 '+seq+' > raven/assembly.fasta'
+            subprocess.call(raven,shell=True)                
 
 if __name__ == "__main__":
     main()

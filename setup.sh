@@ -20,4 +20,6 @@ conda install -c bioconda flye
 #raven
 conda create -n raven
 conda activate raven
-conda install -c bioconda 
+conda install -c bioconda raven-assembler
+
+#abricate

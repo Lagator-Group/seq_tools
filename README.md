@@ -47,7 +47,7 @@ If there are EXACTLY 2 short reads and 1 long read, will perform hybrid assembly
 ```
 unicycler -1 short_1.fastq -2 short_2.fastq -l long.fastq -o uni_hybrid/
 ```
-Input: All ```.fastq``` or ```fastq.gz``` in current directory. If ```filtlong/``` in directory, will search sequences inside
+Input: All ```.fastq``` or ```fastq.gz``` in current directory. If ```filtlong/``` in directory, will search sequences inside.
 Output: Folder(s) in current directory.
 
 

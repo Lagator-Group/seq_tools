@@ -77,10 +77,10 @@ def main():
     for seq in os.listdir(): 
         if seq.endswith('_1.fastq') or seq.endswith('_1.fastq.gz'): #selects _1 short-read file
             short_list.append(seq) #adds _1 short-read to list
-        elif seq.endswith('.fastq') or seq.endswith('fastq.gz') and '_2' not in seq: #assumes all remaining sequences without _2 are long-reads
+        elif (seq.endswith('.fastq') or seq.endswith('fastq.gz')) and '_2.fastq' not in str(seq): #assumes all remaining sequences without _2 are long-reads
             long_list.append(seq) #adds long-reads to list
 
-    if len(short_list)==2 and len(long_list)==1: #will only run hybrid assembly if there are exactly 1 long and 2 short reads
+    if len(short_list)==1 and len(long_list)==1: #will only run hybrid assembly if there are exactly 1 long and 2 short reads
         unicycler.hybrid(short_list,long_list)
     else:
         if len(short_list)>0:

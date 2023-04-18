@@ -14,5 +14,4 @@ To install filtlong, run ``` conda install -c bioconda filtlong```
 To use if you have many sequences if in directory you wish to use filtlong on.
 Run ```python3 ../path/to/filtlong_all.py``` in the directory containing .fastq files.
 
-Input: All .fastq files in current directory
-Output: fastq.gz in filtlong/ directory
+ Input: All .fastq files in current directory. Output: fastq.gz in filtlong/ directory

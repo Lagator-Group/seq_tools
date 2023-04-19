@@ -8,49 +8,67 @@ Instructions to install Anaconda can be found [here](https://gist.github.com/kau
 
 To create all the conda envs and install all the relevant packages run ```bash -i setup.sh``` and press "y" when prompted.
 
-## Instructions for Use
-Each module will be explained individually how they are currently being used. The combined instructions will be detailed at the end.
+## Individual Modules
+Each module will be explained individually how they are currently being used. The combined instructions will be detailed at the later.
+The settings detailed below are the default settings and are not optimised for specific assembly formats (i.e. plasmids). Please consult relevant GitHub pages for more info on the various packages.
 
 ### [Filtlong.](<https://github.com/rrwick/Filtlong>)
 To install filtlong, run ``` conda install -c bioconda filtlong```
 
-Used to removed low quality reads.
-To use if you have many sequences if in directory you wish to use filtlong on.
-Run ```python3 ../path/to/filtlong_all.py``` in the directory containing ```.fastq``` files.
+Used to removed low quality reads from long reads only.
+Run ```python3 ../path/to/filtlong.py``` in the directory containing ```.fastq``` files.
 Runs the following line of code for all .fastq files in directory:
 ```
 filtlong --min_length 1000 --keep_percent 95 --target_bases 500000000 SEQ.fastq | gzip > filtlong/SEQ.fastq.gz'
 ```
 
-Input: All ```.fastq``` files in current directory. Output: ```fastq.gz``` in ```filtlong/``` directory
+Input: All ```long-read.fastq``` files in current directory. Output: ```fastq.gz``` in current directory
 
 ### [Unicycler](https://github.com/rrwick/Unicycler)
 To install, run ```conda install -c bioconda unicycler```.
 
 To use if you have multiple raw reads (both long and short).
 Will identify long reads and short read pairs and run the appropriate command.
-If directory filtlong/ is present, will only run on the sequences inside.
-Run ```python3 ../path/to/unicycler_all.py``` in directory containing ```.fastq```, ```.fastq.gz``` or ```filtlong/```.
+Run ```python3 ../path/to/unicycler.py``` in directory containing ```.fastq```, ```.fastq.gz```.
 
 Long reads cannot have '_' in their name as that is how the script determines what is a long or short read.
 
 Short reads will execute the following command:
 ```
-unicycler -1 shortname_1.fastq -2 shortname_2.fastq -o shortname_uni_short/
+unicycler -1 shortread_1.fastq -2 shortread_2.fastq -o uni_short/
 ```
 Long reads will execute the following command:
 ```
-unicycler -l longname.fastq -o longname_uni_long/
+unicycler -l longread.fastq -o uni_long/
 ```
 
-If there are EXACTLY 2 short reads and 1 long read, will perform hybrid assembly instead:
+If there are twice as many short reads than long reads, will perform hybrid assembly as well:
 ```
 unicycler -1 short_1.fastq -2 short_2.fastq -l long.fastq -o uni_hybrid/
 ```
-Input: All ```.fastq``` or ```fastq.gz``` in current directory. If ```filtlong/``` in directory, will search sequences inside.
-Output: Folder(s) in current directory.
+Input: All ```.fastq``` and ```fastq.gz``` in current directory.
+Output: ```assembly.fasta``` in ```uni_long/short/hybrid/``` in current directory.
 
 
 ### [Flye](https://github.com/fenderglass/Flye/)
 To install, run ```conda install -c bioconda flye```.
 
+Use ```python3 ../path/to/flye.py``` to assemble each individual ```longname.fastq``` with following command:
+```
+flye -o flye --threads 8 --nano-raw longread.fastq
+
+```
+Input: All ```.fastq``` and ```.fastq.gz``` long reads in current directory.
+Output: ```assembly.fasta``` in ```flye/``` in current directory.
+
+### [Raven](https://github.com/lbcb-sci/raven)
+To install, run ```conda install -c bioconda raven-assembler ```.
+
+Use ```python3 ../path/to/raven.py``` to assemble each individual ```longname.fastq``` with following command:
+```
+raven --threads 8 longread.fastq > raven/assembly.fasta
+
+```
+
+Input: All ```.fastq``` and ```.fastq.gz``` long reads in current directory.
+Output: ```assembly.fasta``` in ```raven/``` in current directory.

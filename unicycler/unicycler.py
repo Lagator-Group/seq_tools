@@ -52,7 +52,7 @@ def main():
     long_list=[]
     for seq in os.listdir(): #groups sequences into short and long reads
         if seq.endswith('.fastq') or seq.endswith('fastq.gz'):
-            if '_' not in seq:
+            if '_' not in seq: #'_' cannot be in file name
                 long_list.append(seq)
             elif '_2' not in seq:
                 short_list.append(seq)

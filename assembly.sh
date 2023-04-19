@@ -1,5 +1,6 @@
 #!/bin/bash
 
+tar -czvf backup.tar.gz *.fastq
 conda activate filtlong
 python3 seq_tools/filtlong/filtlong.py
 conda activate unicycler

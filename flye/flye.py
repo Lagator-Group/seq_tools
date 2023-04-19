@@ -21,20 +21,14 @@ Output: Folder(s) in current directory. If there is a filtlong/ directory, resul
 def main():
     filtlong=False
     long_list=[]
-    if os.path.isdir('filtlong'):
-        filtlong=True
-        os.chdir('filtlong') #makes filtlong/ current working directory
-    for seq in os.listdir(): 
-        if (seq.endswith('.fastq') or seq.endswith('fastq.gz')) and ('_2' not in seq or '_1' not in seq): #ensure no short reads are added to list
-            long_list.append(seq) #adds long-reads to list
+    for seq in os.listdir(): #groups sequences into short and long reads
+        if seq.endswith('.fastq') or seq.endswith('fastq.gz'):
+            if '_' not in seq:
+                long_list.append(seq)
     n=0
-    _n=len(long_list)
-    while n<_n:
+    for seq in long_list:
         seq=long_list[n]
-        if filtlong==True:
-            flye='flye -o ../'+str(n)+'flye --nano-raw '+seq+' -t 8'
-        else:
-            flye='flye -o '+str(n)+'flye --nano-raw '+seq+' -t 8'
+        flye='flye -o '+str(n)+'flye --threads 8 --nano-raw '+seq
         subprocess.call(flye,shell=True)                
         n=n+1
 

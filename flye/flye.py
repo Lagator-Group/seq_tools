@@ -25,16 +25,16 @@ def main():
         filtlong=True
         os.chdir('filtlong') #makes filtlong/ current working directory
     for seq in os.listdir(): 
-        if seq.endswith('.fastq') or seq.endswith('fastq.gz') and '_2' not in seq and '_1' not in seq: #ensure no short reads are added to list
+        if (seq.endswith('.fastq') or seq.endswith('fastq.gz')) and ('_2' not in seq or '_1' not in seq): #ensure no short reads are added to list
             long_list.append(seq) #adds long-reads to list
     n=0
     _n=len(long_list)
     while n<_n:
         seq=long_list[n]
         if filtlong==True:
-            flye='flye -o ../'+n+'flye --nano-raw '+seq+' -t 8'
+            flye='flye -o ../'+str(n)+'flye --nano-raw '+seq+' -t 8'
         else:
-            flye='flye -o '+n+'flye --nano-raw '+seq+' -t 8'
+            flye='flye -o '+str(n)+'flye --nano-raw '+seq+' -t 8'
         subprocess.call(flye,shell=True)                
         n=n+1
 

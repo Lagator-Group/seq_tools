@@ -17,21 +17,23 @@ Output: fastq.gz in filtlong/ directory
 '''
 
 def main():
-    align_list=[]
-    for name in os.listdir():
-        if name.endswith('.fastq'): 
-            align_list.append(name)
+    long_list=[]
+    for seq in os.listdir(): 
+        if seq.endswith('.fastq') or seq.endswith('fastq.gz'):
+            if seq.endswith('_1.fastq') or seq.endswith('_1.fastq.gz') or seq.endswith('_2.fastq') or seq.endswith('_2.fastq.gz'): #ensure no short reads are added to list
+                continue 
+            else:
+                long_list.append(seq)  #adds long-reads to list
     n=0
-    _n=len(align_list)
-    mkdir='mkdir filtlong'
+    _n=len(long_list)
+    mkdir='mkdir pre_filtlong'
     subprocess.call(mkdir,shell=True)
-    for seq in align_list:
-        print(seq)
-        filtlong='filtlong --min_length 1000 --keep_percent 95 --target_bases 500000000 '+seq+' | gzip > filtlong/'+seq+'.gz'
+    
+    for seq in long_list:
+        mv='mv '+seq+' pre_filtlong'
+        subprocess.call(mv,shell=True)
+        filtlong='filtlong --min_length 1000 --keep_percent 95 --target_bases 500000000 pre_filtlong/'+seq+' | gzip > '+seq+'.gz'
         subprocess.call(filtlong,shell=True)
-
-        n=n+1
-        print(n,'/',_n,' done')
     
 if __name__ == "__main__":
     main()

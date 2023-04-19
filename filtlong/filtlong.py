@@ -37,6 +37,7 @@ def main():
     
 if __name__ == "__main__":
     if os.path.isdir('pre_filtlong'):
+        print('Filtlong already done. Skipping')
         quit()
     else:
         main()

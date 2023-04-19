@@ -36,4 +36,7 @@ def main():
         subprocess.call(filtlong,shell=True)
     
 if __name__ == "__main__":
-    main()
+    if os.path.isdir('pre_filtlong'):
+        quit()
+    else:
+        main()

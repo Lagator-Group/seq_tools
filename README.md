@@ -8,7 +8,7 @@ Instructions to install Anaconda can be found [here](https://gist.github.com/kau
 
 To create all the conda envs and install all the relevant packages run ```bash -i setup.sh``` and press "y" when prompted.
 
-## Sequenc Assembly Tools
+## Sequence Assembly Tools
 Each module will be explained individually how they are currently being used. The combined instructions will be detailed at the later.
 The settings detailed below are the default settings and are not optimised for specific assembly formats (i.e. plasmids). Please consult relevant GitHub pages for more info on the various packages.
 
@@ -71,3 +71,15 @@ raven --threads 8 longread.fastq > raven/assembly.fasta
 ```
 Input: All ```.fastq``` and ```.fastq.gz``` long reads in current directory.
 Output: ```assembly.fasta``` in ```raven/``` in current directory.
+
+## Annotion Tools
+### [Abricate](https://github.com/tseemann/abricate)
+To install, run ```conda install -c bioconda abricate ```.
+
+Use ```python3 ../path/to/abricate.py``` to annotate all ```assembly.fasta``` in all subdirectories with following command:
+```
+abricate --summary assembler1/assembly.fasta assembler2/assembly.fasta assembler3/assembly.fasta > abricate/summary.tab
+```
+
+Input: All ```assembly.fasta``` in all subdirectories.
+Output: ```abricate/summary.tab```.

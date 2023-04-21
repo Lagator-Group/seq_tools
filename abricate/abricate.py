@@ -34,8 +34,8 @@ def main():
         abricate='abricate '+fasta+' > abricate/'+name
         subprocess.call(abricate,shell=True)
 
-    csv_string=" ".join(tab_list)
-    summary='abricate --summary '+csv_string+'> abricate/summary.tab'
+    tab_string=" ".join(tab_list)
+    summary='abricate --summary '+tab_string+'> abricate/summary.tab'
 
     subprocess.call(summary,shell=True)
 

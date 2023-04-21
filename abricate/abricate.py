@@ -6,12 +6,12 @@ import subprocess
 
 def main():
     assembly=glob.glob('**/assembly.fasta', recursive=True) #generates list of all "assembly.fasta" in subdirectories
-    csv_list=[]
+    tab_list=[]
 
     for fasta in assembly:
-        name=fasta[:-15]+'.csv'
-        csv_path='abricate/'+name
-        csv_list.append(csv_path)
+        name=fasta[:-15]+'.tab'
+        tab_path='abricate/'+name
+        tab_list.append(tab_path)
         print(name)
 
         if not os.path.isdir('abricate'):
@@ -20,7 +20,10 @@ def main():
         abricate='abricate '+fasta+' > abricate/'+name
         subprocess.call(abricate,shell=True)
 
-        summary= #converts list into string separated by space    
+    csv_string=" ".join(tab_list)
+    summary='abricate --summary '+csv_string+'> abricate/summary.tab'
+
+    subprocess.call(summary,shell=True)
 
 if __name__=="__main__":
     main()

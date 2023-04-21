@@ -19,7 +19,6 @@ Input: All .fastq or fastq.gz in current directory. If filtlong/ in directory, w
 Output: Folder(s) in current directory. If there is a filtlong/ directory, results will be in that directory
 '''
 def main():
-    filtlong=False
     long_list=[]
     for seq in os.listdir(): #groups sequences into short and long reads
         if seq.endswith('.fastq') or seq.endswith('fastq.gz'):

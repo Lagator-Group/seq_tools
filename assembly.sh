@@ -7,4 +7,4 @@ python3 seq_tools/unicycler/unicycler.py
 conda activate raven
 python3 seq_tools/raven/raven.py
 conda activate flye
-python3 seq_tools/flye/flye.py
+python3 seq_tools/flye/flye_ont.py

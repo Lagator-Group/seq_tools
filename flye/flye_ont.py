@@ -28,7 +28,7 @@ def main():
     n=0
     for seq in long_list:
         seq=long_list[n]
-        flye='flye -o '+str(n)+'flye --threads 8 --nano-raw '+seq
+        flye='flye -o '+str(n)+'flye --threads 8 --nano-raw '+seq #assumes it is reading raw nanopore reads
         subprocess.call(flye,shell=True)                
         n=n+1
 

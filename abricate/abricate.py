@@ -4,6 +4,20 @@ import glob
 import os
 import subprocess
 
+'''
+Requires assembly to be installed and mapped to PATH to function
+Requires python3 to be installed and mapped to PATH to function
+<https://anaconda.org/bioconda/abricate>
+<https://github.com/tseemann/abricate/>
+
+##Instructions for use
+Run 'python3 ../path/to/abricate.py' in directory containing directories, each containing ../assembly.fasta
+For long read, '_' cannot be in file name
+
+Input: All assembly.fasta in subdirectories.
+Output: Summaries in abricate/ directory.
+'''
+
 def main():
     assembly=glob.glob('**/assembly.fasta', recursive=True) #generates list of all "assembly.fasta" in subdirectories
     tab_list=[]

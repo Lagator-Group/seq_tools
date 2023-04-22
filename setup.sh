@@ -23,3 +23,6 @@ conda activate raven
 conda install -c bioconda raven-assembler
 
 #abricate
+conda create -n abricate
+conda activate abricate
+conda install -c bioconda abricate

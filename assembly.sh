@@ -1,12 +1,12 @@
 #!/bin/bash
 
-seq_tools="/mnt/c/Users/jtdej/Desktop/GitHub/seq_tools"
+assembly="/mnt/c/Users/jtdej/Desktop/GitHub/seq_tools/assembly
 
 conda activate filtlong
-python3 "${seq_tools}/filtlong/filtlong.py"
+python3 "${assembly}/filtlong.py"
 conda activate unicycler
-python3 "${seq_tools}/unicycler/unicycler.py"
+python3 "${assembly}/unicycler.py"
 conda activate raven
-python3 "${seq_tools}/raven/raven.py"
+python3 "${assembly}/raven.py"
 conda activate flye
-python3 "${seq_tools}/flye/flye_ont.py"
+python3 "${assembly}/flye_ont.py"

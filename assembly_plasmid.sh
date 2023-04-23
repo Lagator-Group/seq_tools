@@ -1,6 +1,6 @@
 #!/bin/bash
 
-assembly="/mnt/c/Users/jtdej/Desktop/GitHub/seq_tools/assembly
+assembly="/mnt/c/Users/jtdej/Desktop/GitHub/seq_tools/assembly"
 
 conda activate filtlong
 python3 "${assembly}/filtlong.py"

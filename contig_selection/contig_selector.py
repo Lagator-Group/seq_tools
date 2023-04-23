@@ -3,7 +3,6 @@
 import os
 import pandas as pd
 import subprocess
-import csv
 
 def get_contig(tab):
     df=pd.read_csv(tab,sep='\t',usecols=['#FILE','SEQUENCE']) #opens tab file as pd.df
@@ -27,19 +26,19 @@ def get_contig(tab):
                 subprocess.call('mkdir '+contig_directory,shell=True) 
 
             _fname=str(df['#FILE'][n])[:-15]
-            fname=_fname+'_'+str(df['SEQUENCE'][n])+'.fasta'
-            path=contig_directory+'/'+fname
+            fname=_fname+'_'+str(df['SEQUENCE'][n])+'.fasta' #final file name example = 0flye_contig_1.fasta
+            path=contig_directory+'/'+fname #contigs/0flye_contig_1.fasta
             print(path)
             with open(path, 'w') as f:
-                f.write(result)
+                f.write(result) #outputs selected contigs to appropriate .fasta file
             f.close()
 
         n=n+1
 
 def main():
     cwd=os.getcwd()
-
-    abricate_folders=[f for f in os.listdir(cwd) if 'abricate' in f and os.path.isdir(os.path.join(cwd, f))] #selects all folders with the name 'abricate' in it
+    abricate_folders=[f for f in os.listdir(cwd) if 'abricate' in f \
+                      and os.path.isdir(os.path.join(cwd, f))] #selects all folders with the name 'abricate' in it
     
     tab_files=[]
     for root, dirs, files in os.walk(cwd): #gets all the .tab files in subdirectories

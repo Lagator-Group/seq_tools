@@ -12,7 +12,6 @@ Requires python3 to be installed and mapped to PATH to function
 
 ##Instructions for use
 Run 'python3 ../path/to/abricate.py' in directory containing directories, each containing ../assembly.fasta
-For long read, '_' cannot be in file name
 
 Input: All assembly.fasta in subdirectories.
 Output: Summaries in abricate/ directory.

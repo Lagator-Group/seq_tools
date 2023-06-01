@@ -12,7 +12,7 @@ To create all the conda envs and install all the relevant packages run ```bash -
 ### Assemble and Isolate Plasmid Contigs
 Copy the folder ```seq_tools``` to the folder containing the ```.fastq``` or ```.fastq.gz``` and run the following:
 ```
-bash -i assembly_plasmid.sh && bash -i contig_plasmid.sh
+bash -i assembly_plasmid.sh ; bash -i contig_plasmid.sh
 ```
 
 ## Sequence Assembly Tools

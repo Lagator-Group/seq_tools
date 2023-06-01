@@ -8,8 +8,14 @@ Instructions to install Anaconda can be found [here](https://gist.github.com/kau
 
 To create all the conda envs and install all the relevant packages run ```bash -i setup.sh``` and press "y" when prompted.
 
+## Complete Pipeline Instructions
+### Assemble and Isolate Plasmid Contigs
+Copy the folder ```seq_tools``` to the folder containing the ```.fastq``` or ```.fastq.gz``` and run the following:
+```
+bash -i assembly_plasmid.sh && bash -i contig_plasmid.sh
+```
+
 ## Sequence Assembly Tools
-Each module will be explained individually how they are currently being used. The combined instructions will be detailed at the later.
 The settings detailed below are the default settings and are not optimised for specific assembly formats (i.e. plasmids). Please consult relevant GitHub pages for more info on the various packages.
 
 ### [Filtlong.](<https://github.com/rrwick/Filtlong>)

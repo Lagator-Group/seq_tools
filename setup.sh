@@ -3,19 +3,13 @@
 #run by executing "bash -i setup.sh"
 
 #filtlong
-conda create -n filtlong
-conda activate filtlong
-conda install -c bioconda filtlong
+conda create -n filtlong -c bioconda filtlong
 
 #unicycler
-conda create -n unicycler
-conda activate unicycler
-conda install -c bioconda unicycler
+conda create -n unicycler -c bioconda unicycler
 
 #flye
-conda create -n flye
-conda activate flye
-conda install -c bioconda flye
+conda create -n flye -c bioconda flye
 
 #raven
 conda create -n raven

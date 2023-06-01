@@ -27,7 +27,7 @@ def main():
         tab_list.append(tab_path)
         print(name)
 
-        if not os.path.isdir('abricate'):
+        if not os.path.isdir('abricate_plasmid'):
             mkdir='mkdir abricate_plasmid'
             subprocess.call(mkdir,shell=True)
         abricate='abricate -db plasmidfinder '+fasta+' > abricate_plasmid/'+name
@@ -35,7 +35,6 @@ def main():
 
     tab_string=" ".join(tab_list)
     summary='abricate --summary '+tab_string+'> abricate_plasmid/summary.tab'
-
     subprocess.call(summary,shell=True)
 
 if __name__=="__main__":

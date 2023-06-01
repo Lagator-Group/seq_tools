@@ -35,7 +35,6 @@ def main():
 
     tab_string=" ".join(tab_list)
     summary='abricate --summary '+tab_string+'> abricate/summary.tab'
-
     subprocess.call(summary,shell=True)
 
 if __name__=="__main__":

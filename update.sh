@@ -21,3 +21,7 @@ conda update -c bioconda raven-assembler
 #abricate
 conda activate abricate
 conda update -c bioconda abricate
+
+#pandas
+conda activate pandas
+conda update -c conda-forge pandas

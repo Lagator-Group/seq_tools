@@ -16,3 +16,6 @@ conda create -n raven -c bioconda raven-assembler
 
 #abricate
 conda create -n abricate -c bioconda abricate
+
+#pandas
+conda create -n pandas -c conda-forge pandas

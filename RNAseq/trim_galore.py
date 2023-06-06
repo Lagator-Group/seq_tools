@@ -13,7 +13,7 @@ def main():
             seq_list.append(seq)
 
     for seq in seq_list:
-        _1=seq
+        _1=str(seq)
         _2=str(_1.replace('_1.fastq','_2.fastq')) #assumes there is a corresponding _2 in folder
 
         trim_galore='trim_galore --paired '+_1+' '+_2+' -q 20 --phred33 --fastqc --length 50 fastq_trimmed/ '+str(threads)

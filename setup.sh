@@ -19,3 +19,6 @@ conda create -n abricate -c bioconda abricate
 
 #pandas
 conda create -n pandas -c conda-forge pandas
+
+#trim-galore
+conda create -n trim-galore -c bioconda trim-galore

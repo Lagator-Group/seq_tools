@@ -25,3 +25,7 @@ conda update -c bioconda abricate
 #pandas
 conda activate pandas
 conda update -c conda-forge pandas
+
+#trim-galore
+conda activate trim-galore
+conda update -c bioconda trim-galore

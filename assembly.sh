@@ -1,10 +1,10 @@
 #!/bin/bash
 
 conda activate filtlong
-python3 "assembly/filtlong.py"
+python3 "seq_tools/assembly/filtlong.py"
 conda activate unicycler
-python3 "assembly/unicycler.py"
+python3 "seq_tools/assembly/unicycler.py"
 conda activate raven
-python3 "assembly/raven.py"
+python3 "seq_tools/assembly/raven.py"
 conda activate flye
-python3 "assembly/flye_ont.py"
+python3 "seq_tools/assembly/flye_ont.py"

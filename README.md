@@ -6,7 +6,7 @@ Instructions on how to install WSL can be found [here](https://learn.microsoft.c
 It is strongly recommended to use conda for each package. Several bash scripts in this repo assume you have conda installed. A setup.sh script is included to create all the necessary environments and install the appropriate packages.
 Instructions to install Anaconda can be found [here](https://gist.github.com/kauffmanes/5e74916617f9993bc3479f401dfec7da).
 
-To create all the conda envs and install all the relevant packages run ```bash -i setup.sh``` and press "y" when prompted.
+To create all the conda envs and install all the relevant packages run ```bash -i seq/setup.sh``` and press "y" when prompted.
 
 ## Complete Pipeline Instructions
 ### Assemble and Isolate Plasmid Contigs

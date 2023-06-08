@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# run with "bash -i seq_tools/assembly_plasmid.sh" from directory containing sequence files
+
 conda activate filtlong
 python3 "seq_tools/assembly/filtlong.py"
 conda activate unicycler

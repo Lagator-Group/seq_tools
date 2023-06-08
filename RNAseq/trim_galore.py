@@ -16,7 +16,7 @@ def main():
         _1=str(seq)
         _2=str(_1.replace('_1.fastq','_2.fastq')) #assumes there is a corresponding _2 in folder
 
-        trim_galore='trim_galore --paired '+_1+' '+_2+' -q 20 --phred33 --fastqc --length 50 fastq_trimmed/ '+str(threads)
+        trim_galore='trim_galore --paired '+_1+' '+_2+' -q 20 --phred33 --fastqc --length 50 -o fastq_trimmed/ '+str(threads)
         subprocess.call(trim_galore,shell=True)
 
         n=n+1

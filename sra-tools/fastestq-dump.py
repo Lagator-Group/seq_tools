@@ -16,6 +16,7 @@ Run 'python3 ../path/to/fastestq-dump.py' in directory containing SRR_Acc_List.t
 Input: SRR## in SRR_Acc_List.txt
 Output: .fastq files in current directory
 '''
+threads=8
 
 def main():
     sra_list=[]
@@ -33,7 +34,7 @@ def main():
         subprocess.call(prefetch,shell=True)
 
         print('Generating fastq for '+sra)
-        fasterq_dump='fasterq-dump --threads 8 --mem 14GB '+sra 
+        fasterq_dump='fasterq-dump --threads '+str(threads)+' --mem 14GB '+sra 
         subprocess.call(fasterq_dump,shell=True)
             
     for sra in sra_list:

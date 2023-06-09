@@ -9,4 +9,7 @@ conda activate bbmap
 python3 seq_tools/RNAseq/bbmap.py
 
 conda activate seqkit
-python3 seq_tools/seqkit.py
+python3 seq_tools/RNAseq/seqkit.py
+
+conda activate bowtie
+python3 seq_tools/RNAseq/bowtie.py

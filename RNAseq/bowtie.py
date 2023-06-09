@@ -12,7 +12,7 @@ Requires python3 to be installed and mapped to PATH to function
 ##Instructions for use
 Run 'python3 ../path/to/bowtie.py' in directory containing 'fastq_trimmed_norRNA' directory, containing paired _1 and _2.fastq.gz files.
 Adjust thread number according to PC specs.
-Download reference genome from NCBI and paste 'GCF' and 'genomic.gtf' files in directory containing original .fastq files
+Download reference genome from NCBI and paste 'GCF###.fna' and 'genomic.gtf' files in directory containing original .fastq files
 Adjust strain name depending on reference genome.
 
 Input: All paired .fastq.gz files. File names must be marked with _1 and _2 for forward and reverse reads, respectively.
@@ -23,11 +23,13 @@ threads=8
 strain='MG1655'
 
 def main():
+    #gets name of reference sequence (.fna)
     fna=[]
     for file in os.listdir():
         if file.endswith('.fna'):
-            fna.append(file)
+            fna.append(file) 
     
+    #ensures only 1 reference genome is present in the directory
     if len(fna)>1:
         print('Too many reference genomes in directory')
     elif len(fna)<1:
@@ -39,6 +41,7 @@ def main():
     print(build)
     subprocess.call(build,shell=True)
 
+    #create necessary SAM directory for output
     if not os.path.isdir('Bowtie2_SAM'):
         mkdir='mkdir Bowtie2_SAM'
         print(mkdir)
@@ -47,7 +50,7 @@ def main():
     fastq=[]
     for file in os.listdir('fastQ_trimmed_norRNA'):
         if file.endswith('_1.fastq.gz'):
-            fastq.append(file)
+            fastq.append(file) #assumes that _1 and _2 have same beginning of name
     for seq in fastq:
         sam=seq.replace('_1.fastq.gz','')    
         _1=seq

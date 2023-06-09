@@ -18,6 +18,8 @@ For long read, '_' cannot be in file name
 Input: All .fastq or fastq.gz in current directory. If filtlong/ in directory, will search sequences inside
 Output: Folder(s) in current directory. If there is a filtlong/ directory, results will be in that directory
 '''
+threads=8
+
 def main():
     long_list=[]
     for seq in os.listdir(): #groups sequences into short and long reads
@@ -28,7 +30,9 @@ def main():
     n=0
     for seq in long_list:
         mkdir='mkdir '+str(n)+'raven'
-        raven='raven --threads 8 '+seq+' > '+str(n)+'raven/assembly.fasta'
+        raven='raven --threads '+str(threads)+' +seq+ > '+str(n)+'raven/assembly.fasta'
+        print(mkdir)
+        print(raven)
         subprocess.call(mkdir,shell=True)
         subprocess.call(raven,shell=True)
         n=n+1             

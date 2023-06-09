@@ -27,6 +27,7 @@ class unicycler:
             _1=seq
             _2=str(_1.replace('_1.fastq','_2.fastq')) #assumes there is a corresponding _2 in folder
             unicycler='unicycler -1 '+_1+' -2 '+_2+' -o '+str(n)+'uni_short/'
+            print(unicycler)
             subprocess.call(unicycler,shell=True)
             n=n+1
 
@@ -34,6 +35,7 @@ class unicycler:
         n=0
         for seq in long_list:
             unicycler='unicycler -l '+seq+' -o '+str(n)+'uni_long/'
+            print(unicycler)
             subprocess.call(unicycler,shell=True)
             n=n+1
         
@@ -44,6 +46,7 @@ class unicycler:
             _2=str(_1.replace('_1.fastq','_2.fastq')) #assumes there is a corresponding _2 in folder
             _long=long_list[n]
             unicycler='unicycler -1 '+_1+' -2 '+_2+' -l '+_long+' -o '+str(n)+'uni_hybrid/'
+            print(unicycler)
             subprocess.call(unicycler,shell=True)
             n=n+1
 

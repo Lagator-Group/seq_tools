@@ -29,6 +29,7 @@ def main():
 
         if not os.path.isdir('abricate_plasmid'):
             mkdir='mkdir abricate_plasmid'
+            print(mkdir)
             subprocess.call(mkdir,shell=True)
         abricate='abricate -db plasmidfinder '+fasta+' > abricate_plasmid/'+name
         print(abricate)

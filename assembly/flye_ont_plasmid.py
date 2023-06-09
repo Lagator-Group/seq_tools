@@ -30,6 +30,7 @@ def main():
     for seq in long_list:
         seq=long_list[n]
         flye='flye -o '+str(n)+'flye_plasmid --threads '+str(threads)+' --nano-raw '+seq+' --plasmid' #assumes it is reading raw nanopore reads
+        print(flye)
         subprocess.call(flye,shell=True)                
         n=n+1
 

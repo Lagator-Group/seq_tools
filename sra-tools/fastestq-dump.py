@@ -31,10 +31,12 @@ def main():
     for sra in sra_list:
         print('Prefetching .sra for '+sra) #Prefetching first before running fasterq-dump is faster than fasterq-dump alone.
         prefetch='prefetch '+sra
+        print(prefetch)
         subprocess.call(prefetch,shell=True)
 
         print('Generating fastq for '+sra)
         fasterq_dump='fasterq-dump --threads '+str(threads)+' --mem 14GB '+sra 
+        print(fasterq_dump)
         subprocess.call(fasterq_dump,shell=True)
             
     for sra in sra_list:

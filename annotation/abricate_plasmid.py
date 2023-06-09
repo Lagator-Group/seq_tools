@@ -31,10 +31,12 @@ def main():
             mkdir='mkdir abricate_plasmid'
             subprocess.call(mkdir,shell=True)
         abricate='abricate -db plasmidfinder '+fasta+' > abricate_plasmid/'+name
+        print(abricate)
         subprocess.call(abricate,shell=True)
 
     tab_string=" ".join(tab_list)
     summary='abricate --summary '+tab_string+'> abricate_plasmid/summary.tab'
+    print(summary)
     subprocess.call(summary,shell=True)
 
 if __name__=="__main__":

@@ -5,7 +5,7 @@ import os
 import subprocess
 
 '''
-Requires assembly to be installed and mapped to PATH to function
+Requires abricate to be installed and mapped to PATH to function
 Requires python3 to be installed and mapped to PATH to function
 <https://anaconda.org/bioconda/abricate>
 <https://github.com/tseemann/abricate/>

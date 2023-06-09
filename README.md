@@ -15,6 +15,12 @@ Copy the folder ```seq_tools``` to the folder containing the sequence files and 
 bash -i seq_tools/assembly_plasmid.sh ; bash -i seq_tools/contig_plasmid.sh
 ```
 
+### RNAseq
+Download reference genome from NCBI and copy `GCF###.fna` and `genome.gtf` files to directory containing `.fastq` files.
+Copy the folder ```seq_tools``` to the folder containing the sequence files and run the following:
+```
+bash -i seq_tools/rnaseq.sh
+```
 ## Sequence Assembly Tools
 The settings detailed below are the default settings and are not optimised for specific assembly formats (i.e. plasmids). Please consult relevant GitHub pages for more info on the various packages.
 

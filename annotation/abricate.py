@@ -30,7 +30,7 @@ def main():
 
         try: #removes existing directory to prevent errors
             os.rmdir('abricate')
-        finally:
+        except:
             os.mkdir('abricate')
 
     tab_string=" ".join(tab_list)

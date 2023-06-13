@@ -30,7 +30,7 @@ def main():
 
         try: #removes existing directory to prevent errors
             os.rmdir('abricate_plasmid')
-        finally:
+        except:
             os.mkdir('abricate_plasmid')
 
         abricate='abricate -db plasmidfinder '+fasta+' > abricate_plasmid/'+name

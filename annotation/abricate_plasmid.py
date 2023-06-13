@@ -28,8 +28,11 @@ def main():
         tab_list.append(tab_path)
         print(name)
 
-        if not os.path.isdir('abricate_plasmid'):
+        try: #removes existing directory to prevent errors
+            os.rmdir('abricate_plasmid')
+        finally:
             os.mkdir('abricate_plasmid')
+
         abricate='abricate -db plasmidfinder '+fasta+' > abricate_plasmid/'+name
         print(abricate)
         subprocess.call(abricate,shell=True)

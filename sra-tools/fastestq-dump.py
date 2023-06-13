@@ -2,7 +2,7 @@
 
 import subprocess
 import os
-import shutil
+
 '''
 Require sra-tools to be installed and mapped to PATH to function
 Requires python3 to be installed and mapped to PATH to function
@@ -40,7 +40,7 @@ def main():
         subprocess.call(fasterq_dump,shell=True)
             
     for sra in sra_list:
-        shutil.rmtree(sra)
+        os.rmdir(sra)
 
 if __name__ == "__main__":
     main()

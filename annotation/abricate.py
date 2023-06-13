@@ -28,11 +28,10 @@ def main():
         tab_list.append(tab_path)
         print(name)
 
-        if not os.path.isdir('abricate'):
+        try: #removes existing directory to prevent errors
+            os.rmdir('abricate')
+        finally:
             os.mkdir('abricate')
-        abricate='abricate '+fasta+' > abricate/'+name
-        print(abricate)
-        subprocess.call(abricate,shell=True)
 
     tab_string=" ".join(tab_list)
     summary='abricate --summary '+tab_string+'> abricate/summary.tab'

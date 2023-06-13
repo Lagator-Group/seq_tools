@@ -47,7 +47,7 @@ def main():
     #create necessary SAM directory for output
     try:
         os.rmdir('Bowtie2_SAM') #removes if it already exists to prevent errors
-    finally:
+    except:
         os.mkdir('Bowtie2_SAM')
 
     fastq=[]
@@ -65,11 +65,11 @@ def main():
         subprocess.call(bowtie,shell=True)
     
     try:
-        os.rmdir('refseq')
-    finally:
         os.mkdir('refseq')
+    except:
+        pass
     
-    for file in os.listdir():
+    for file in os.listdir(): #cleans up the main directory
         if file.endswith('.bt2') or file.endswith('.fna') or file.endswith('.gtf'):
             shutil.move(file,'refseq/')
     

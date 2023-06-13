@@ -26,7 +26,7 @@ def main():
     try: #removes directory if it exists already to prevent errors
         os.rmdir('fastQ_trimmed_norRNA')
         os.rmdir('fastQ_trimmed_rRNA')
-    finally:    
+    except:    
         if not os.path.isdir('fastQ_trimmed_norRNA'):
             mkdir='mkdir fastQ_trimmed_norRNA'
         if not os.path.isdir('fastQ_trimmed_rRNA'):

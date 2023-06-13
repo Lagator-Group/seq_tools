@@ -2,6 +2,7 @@
 
 import subprocess
 import os
+from configparser import ConfigParser
 
 '''
 Requires raven to be installed and mapped to PATH to function
@@ -18,7 +19,10 @@ For long read, '_' cannot be in file name
 Input: All .fastq or fastq.gz in current directory. If filtlong/ in directory, will search sequences inside
 Output: Folder(s) in current directory. If there is a filtlong/ directory, results will be in that directory
 '''
-threads=8
+config=ConfigParser()
+config.read('config.ini')
+
+threads=config.get('main','threads')
 
 def main():
     long_list=[]

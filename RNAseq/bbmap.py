@@ -23,12 +23,16 @@ def main():
     ref='ribokmers/ribokmers.fa' #path to ribokmers.
 
     #creates necessary directories if not already present
-    if not os.path.isdir('fastQ_trimmed_norRNA'):
-        mkdir='mkdir fastQ_trimmed_norRNA'
-    if not os.path.isdir('fastQ_trimmed_rRNA'):
-        mkdir=mkdir+' fastQ_trimmed_rRNA'
-    if len(mkdir)>0:
-        subprocess.call(mkdir,shell=True)
+    try: #removes directory if it exists already to prevent errors
+        os.rmdir('fastQ_trimmed_norRNA')
+        os.rmdir('fastQ_trimmed_rRNA')
+    finally:    
+        if not os.path.isdir('fastQ_trimmed_norRNA'):
+            mkdir='mkdir fastQ_trimmed_norRNA'
+        if not os.path.isdir('fastQ_trimmed_rRNA'):
+            mkdir=mkdir+' fastQ_trimmed_rRNA'
+        if len(mkdir)>0:
+            subprocess.call(mkdir,shell=True)
     
     seq_list=[]
     for seq in os.listdir(): 

@@ -33,8 +33,10 @@ def main():
     #ensures only 1 reference genome is present in the directory
     if len(fna)>1:
         print('Too many reference genomes in directory')
+        quit()
     elif len(fna)<1:
         print('There are not enough reference genomes in directory')
+        quit()
     
     print(fna[0])
 
@@ -43,9 +45,11 @@ def main():
     subprocess.call(build,shell=True)
 
     #create necessary SAM directory for output
-    if not os.path.isdir('Bowtie2_SAM'):
+    try:
+        os.rmdir('Bowtie2_SAM') #removes if it already exists to prevent errors
+    finally:
         os.mkdir('Bowtie2_SAM')
-    
+
     fastq=[]
     for file in os.listdir('fastQ_trimmed_norRNA'):
         if file.endswith('_1.fastq.gz'):
@@ -60,9 +64,11 @@ def main():
         print(bowtie)
         subprocess.call(bowtie,shell=True)
     
-    if not os.path.isdir('refseq'):
+    try:
+        os.rmdir('refseq')
+    finally:
         os.mkdir('refseq')
-
+    
     for file in os.listdir():
         if file.endswith('.bt2') or file.endswith('.fna') or file.endswith('.gtf'):
             shutil.move(file,'refseq/')

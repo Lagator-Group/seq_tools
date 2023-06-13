@@ -2,6 +2,7 @@
 
 import subprocess
 import os
+import shutil
 
 '''
 Requires bowtie to be installed and mapped to PATH to function
@@ -43,9 +44,7 @@ def main():
 
     #create necessary SAM directory for output
     if not os.path.isdir('Bowtie2_SAM'):
-        mkdir='mkdir Bowtie2_SAM'
-        print(mkdir)
-        subprocess.call(mkdir,shell=True)
+        os.mkdir('Bowtie2_SAM')
     
     fastq=[]
     for file in os.listdir('fastQ_trimmed_norRNA'):
@@ -57,18 +56,16 @@ def main():
         _2=seq.replace('_1.fastq.gz','_2.fastq.gz')
         bowtie='bowtie2 -x '+strain+' -1 fastQ_trimmed_norRNA/'+_1+' -2 fastQ_trimmed_norRNA/'+_2+\
             ' -S Bowtie2_SAM/'+sam+'.sam --no-mixed --threads '+str(threads)
+        print('The following command may take some time to complete.')
         print(bowtie)
         subprocess.call(bowtie,shell=True)
     
-    '''
     if not os.path.isdir('refseq'):
-            mkdir='mkdir refseq'
-            subprocess.call(mkdir,shell=True)
+        os.mkdir('refseq')
 
     for file in os.listdir():
         if file.endswith('.bt2') or file.endswith('.fna') or file.endswith('.gtf'):
-            move='mv '+file+' refseq'
-            subprocess.call(move,shell=True)
-    '''
+            shutil.move(file,'refseq/')
+    
 if __name__ == "__main__":
     main()

@@ -24,8 +24,13 @@ conda create -n pandas -c conda-forge pandas
 conda create -n trim-galore -c bioconda trim-galore
 
 #bbmap
-conda create -n bbmap
+conda create -n bbmap -c bioconda bbmap
+
 #seqkit
-conda create -n seqkit
+conda create -n seqkit -c bioconda seqkit
+
 #bowtie
-conda create -n bowtie
+conda create -n bowtie -c bioconda bowtie2
+
+#samtools
+conda create -n samtools -c bioconda samtools

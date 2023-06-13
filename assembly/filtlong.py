@@ -2,6 +2,7 @@
 
 import subprocess
 import os
+import shutil
 
 '''
 Require filtlong to be installed and mapped to PATH to function
@@ -26,14 +27,10 @@ def main():
                 long_list.append(seq)  #adds long-reads to list
     n=0
     _n=len(long_list)
-    mkdir='mkdir pre_filtlong'
-    print(mkdir)
-    subprocess.call(mkdir,shell=True)
+    os.mkdir('pre_filtlong')
     
     for seq in long_list:
-        mv='mv '+seq+' pre_filtlong'
-        print(mv)
-        subprocess.call(mv,shell=True)
+        shutil.move(seq,'pre_filtlong/')
         filtlong='filtlong --min_length 1000 --keep_percent 95 --target_bases 500000000 pre_filtlong/'+seq+' | gzip > '+seq+'.gz'
         print(filtlong)
         subprocess.call(filtlong,shell=True)

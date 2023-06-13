@@ -29,11 +29,9 @@ def main():
 
     n=0
     for seq in long_list:
-        mkdir='mkdir '+str(n)+'raven'
+        os.mkdir(str(n)+'raven')
         raven='raven --threads '+str(threads)+' +seq+ > '+str(n)+'raven/assembly.fasta'
-        print(mkdir)
         print(raven)
-        subprocess.call(mkdir,shell=True)
         subprocess.call(raven,shell=True)
         n=n+1             
 

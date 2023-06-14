@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#make sure the file is in LF not CRLF
 #run with "bash -i seq_tools/rnaseq.sh" from directory containing sequences
 
 conda activate trim-galore

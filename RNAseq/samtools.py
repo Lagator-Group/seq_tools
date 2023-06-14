@@ -18,6 +18,10 @@ def bam():
         subprocess.call(samtools,shell=True)
 
 def sort():
+    try:
+        os.mkdir('BAM_sorted')
+    except:
+        pass
     for bam in os.listdir('BAM'):
         _sorted=bam.replace('.bam','_sorted.bam')
         sort='samtools sort BAM/'+bam+' -@ '+str(threads)+' -o BAM_sorted/'+_sorted

@@ -25,7 +25,11 @@ def sort():
         subprocess.call(sort,shell=True)
 
 def index():
-    for _sorted in os.listdir('BAM_sorted'):
+    sorted_list=[]
+    for file in os.listdir():
+        if file.endswith('_sorted.bam'):
+            sorted_list.append(file)
+    for _sorted in sorted_list:
         _index='samtools index '+_sorted+' -@ '+str(threads)
         print(_index)
         subprocess.call(_index,shell=True)

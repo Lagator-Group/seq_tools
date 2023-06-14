@@ -36,4 +36,4 @@ conda create -n bowtie -c bioconda bowtie2
 conda create -n samtools -c bioconda samtools=1.9
 
 #subreads
-conda create -n subreads -c bioconda subread
+conda create -n subread -c bioconda subread

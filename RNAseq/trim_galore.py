@@ -2,6 +2,7 @@
 
 import os
 import subprocess
+from configparser import ConfigParser
 
 '''
 Requires trim-galore to be installed and mapped to PATH to function
@@ -17,7 +18,10 @@ Input: All paired .fastq files. File names must be marked with _1 and _2 for for
 Output: Trimmed sequences in fastq_trimmed directory.
 '''
 
-cores=4
+config=ConfigParser()
+config.read('seq_tools/config.ini')
+
+cores=config('main','cores')
 
 def main():
     n=0

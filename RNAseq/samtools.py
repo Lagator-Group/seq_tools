@@ -2,8 +2,12 @@
 
 import os
 import subprocess
+from configparser import ConfigParser
 
-threads=8
+config=ConfigParser()
+config.read('seq_tools/config.ini')
+
+threads=config('main','threads')
 
 def bam():
     try:

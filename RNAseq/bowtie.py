@@ -3,6 +3,7 @@
 import subprocess
 import os
 import shutil
+from configparser import ConfigParser
 
 '''
 Requires bowtie to be installed and mapped to PATH to function
@@ -20,7 +21,10 @@ Input: All paired .fastq.gz files. File names must be marked with _1 and _2 for 
 Output: .sam file in 'Bowtie2_SAM' directory.
 '''
 
-threads=8
+config=ConfigParser()
+config.read('seq_tools/config.ini')
+
+threads=config('main','threads')
 strain='MG1655'
 
 def build():

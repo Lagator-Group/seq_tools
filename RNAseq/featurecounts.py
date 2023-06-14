@@ -1,8 +1,12 @@
 #! python3
 
 import subprocess
+from configparser import ConfigParser
 
-threads=8
+config=ConfigParser()
+config.read('seq_tools/config.ini')
+
+threads=config('main','threads')
 
 def main():
     featurecounts='featureCounts -a genomic.gtf -p -T '+str(threads)+' -t CDS -g gene_id -o featureCounts_table.txt BAM_sorted/*.bam'

@@ -13,3 +13,9 @@ python3 seq_tools/RNAseq/seqkit.py
 
 conda activate bowtie
 python3 seq_tools/RNAseq/bowtie.py
+
+conda activate samtools
+python3 seq_tools/RNAseq/samtools.py
+
+conda activate subread
+python3 seq_tools/RNAseq/featurecounts.py

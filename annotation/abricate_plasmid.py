@@ -19,6 +19,7 @@ Output: Summaries in abricate/ directory.
 
 def main():
     assembly=glob.glob('**/assembly.fasta', recursive=True) #generates list of all "assembly.fasta" in subdirectories
+    print(assembly)
     tab_list=[]
 
     for fasta in assembly:
@@ -27,9 +28,11 @@ def main():
         tab_list.append(tab_path)
         print(name)
 
-        if not os.path.isdir('abricate_plasmid'):
-            mkdir='mkdir abricate_plasmid'
-            subprocess.call(mkdir,shell=True)
+        try: #removes existing directory to prevent errors
+            os.rmdir('abricate_plasmid')
+        except:
+            os.mkdir('abricate_plasmid')
+
         abricate='abricate -db plasmidfinder '+fasta+' > abricate_plasmid/'+name
         print(abricate)
         subprocess.call(abricate,shell=True)

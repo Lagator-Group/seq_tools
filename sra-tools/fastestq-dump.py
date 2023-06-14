@@ -2,7 +2,8 @@
 
 import subprocess
 import os
-import shutil
+from configparser import ConfigParser
+
 '''
 Require sra-tools to be installed and mapped to PATH to function
 Requires python3 to be installed and mapped to PATH to function
@@ -16,7 +17,11 @@ Run 'python3 ../path/to/fastestq-dump.py' in directory containing SRR_Acc_List.t
 Input: SRR## in SRR_Acc_List.txt
 Output: .fastq files in current directory
 '''
-threads=8
+config=ConfigParser()
+config.read('seq_tools/config.ini')
+
+threads=config.get('main','threads')
+memory=config.get('main','memory')
 
 def main():
     sra_list=[]
@@ -35,12 +40,12 @@ def main():
         subprocess.call(prefetch,shell=True)
 
         print('Generating fastq for '+sra)
-        fasterq_dump='fasterq-dump --threads '+str(threads)+' --mem 14GB '+sra 
+        fasterq_dump='fasterq-dump --threads '+str(threads)+' --mem '+str(memory)+'GB '+sra 
         print(fasterq_dump)
         subprocess.call(fasterq_dump,shell=True)
             
     for sra in sra_list:
-        shutil.rmtree(sra)
+        os.rmdir(sra)
 
 if __name__ == "__main__":
     main()

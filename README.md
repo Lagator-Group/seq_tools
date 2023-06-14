@@ -8,6 +8,8 @@ Instructions to install Anaconda can be found [here](https://gist.github.com/kau
 
 To create all the conda envs and install all the relevant packages run ```bash -i seq_tools/setup.sh``` and press "y" when prompted.
 
+Before starting, open the ```config.ini``` file and change the values to match with your system settings
+
 ## Complete Pipeline Instructions
 ### Assemble and Isolate Plasmid Contigs
 Copy the folder ```seq_tools``` to the folder containing the sequence files and run the following:

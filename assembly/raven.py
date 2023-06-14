@@ -22,7 +22,8 @@ Output: Folder(s) in current directory. If there is a filtlong/ directory, resul
 config=ConfigParser()
 config.read('seq_tools/config.ini')
 
-threads=config.get('main','threads')
+sys_specs=config['sys_specs']
+threads=sys_specs['threads']
 
 def main():
     long_list=[]

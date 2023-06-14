@@ -72,7 +72,7 @@ def clean():
         pass
     
     for file in os.listdir(): #cleans up the main directory
-        if file.endswith('.bt2') or file.endswith('.fna') or file.endswith('.gtf'):
+        if file.endswith('.bt2'):
             shutil.move(file,'refseq/')
 
 if __name__ == "__main__":

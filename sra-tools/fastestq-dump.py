@@ -18,7 +18,7 @@ Input: SRR## in SRR_Acc_List.txt
 Output: .fastq files in current directory
 '''
 config=ConfigParser()
-config.read('config.ini')
+config.read('seq_tools/config.ini')
 
 threads=config.get('main','threads')
 memory=config.get('main','memory')

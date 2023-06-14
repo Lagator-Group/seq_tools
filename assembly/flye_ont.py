@@ -20,7 +20,7 @@ Input: All .fastq or fastq.gz in current directory. If filtlong/ in directory, w
 Output: Folder(s) in current directory. If there is a filtlong/ directory, results will be in that directory
 '''
 config=ConfigParser()
-config.read('config.ini')
+config.read('seq_tools/config.ini')
 
 threads=config.get('main','threads')
 

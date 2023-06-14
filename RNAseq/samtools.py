@@ -20,7 +20,7 @@ def bam():
 def sort():
     for bam in os.listdir('BAM'):
         _sorted=bam.replace('.bam','_sorted.bam')
-        sort='samtools sort BAM/'+bam+' -@ '+str(threads)+' -o '+_sorted
+        sort='samtools sort BAM/'+bam+' -@ '+str(threads)+' -o BAM_sorted/'+_sorted
         print(sort)
         subprocess.call(sort,shell=True)
 
@@ -30,7 +30,7 @@ def index():
         if file.endswith('_sorted.bam'):
             sorted_list.append(file)
     for _sorted in sorted_list:
-        _index='samtools index '+_sorted+' -@ '+str(threads)
+        _index='samtools index BAM_sorted/'+_sorted+' -@ '+str(threads)
         print(_index)
         subprocess.call(_index,shell=True)
 

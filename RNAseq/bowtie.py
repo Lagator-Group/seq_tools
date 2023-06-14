@@ -23,7 +23,7 @@ Output: .sam file in 'Bowtie2_SAM' directory.
 threads=8
 strain='MG1655'
 
-def main():
+def build():
     #gets name of reference sequence (.fna)
     fna=[]
     for file in os.listdir():
@@ -43,7 +43,8 @@ def main():
     build='bowtie2-build --threads '+str(threads)+' '+fna[0]+' '+strain
     print(build)
     subprocess.call(build,shell=True)
-
+    
+def sam():
     #create necessary SAM directory for output
     try:
         os.rmdir('Bowtie2_SAM') #removes if it already exists to prevent errors
@@ -63,7 +64,8 @@ def main():
         print('The following command may take some time to complete.')
         print(bowtie)
         subprocess.call(bowtie,shell=True)
-    
+
+def clean():
     try:
         os.mkdir('refseq')
     except:
@@ -72,6 +74,8 @@ def main():
     for file in os.listdir(): #cleans up the main directory
         if file.endswith('.bt2') or file.endswith('.fna') or file.endswith('.gtf'):
             shutil.move(file,'refseq/')
-    
+
 if __name__ == "__main__":
-    main()
+    build()
+    sam()
+    clean()    

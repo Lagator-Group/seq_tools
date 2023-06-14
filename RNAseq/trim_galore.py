@@ -21,7 +21,8 @@ Output: Trimmed sequences in fastq_trimmed directory.
 config=ConfigParser()
 config.read('seq_tools/config.ini')
 
-cores=config('main','cores')
+sys_specs=config['sys_specs']
+cores=sys_specs['cores']
 
 def main():
     n=0

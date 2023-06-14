@@ -24,7 +24,9 @@ Output: .sam file in 'Bowtie2_SAM' directory.
 config=ConfigParser()
 config.read('seq_tools/config.ini')
 
-threads=config('main','threads')
+sys_specs=config['sys_specs']
+threads=sys_specs['threads']
+
 strain='MG1655'
 
 def build():

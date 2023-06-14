@@ -7,7 +7,8 @@ from configparser import ConfigParser
 config=ConfigParser()
 config.read('seq_tools/config.ini')
 
-threads=config('main','threads')
+sys_specs=config['sys_specs']
+threads=sys_specs['threads']
 
 def bam():
     try:

@@ -20,8 +20,9 @@ Output: .fastq files in current directory
 config=ConfigParser()
 config.read('seq_tools/config.ini')
 
-threads=config.get('main','threads')
-memory=config.get('main','memory')
+sys_specs=config['sys_specs']
+threads=sys_specs['threads']
+memory=sys_specs['memory']
 
 def main():
     sra_list=[]

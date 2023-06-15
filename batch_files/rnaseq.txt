@@ -1,0 +1,23 @@
+#!/bin/bash --login
+#$ -cwd
+
+#$ -l mem512 #gives 32GB memory
+#$ -pe smp.pe 8 #allocates 8 cores
+
+conda activate trim-galore
+python3 seq_tools/RNAseq/trim_galore.py
+
+conda activate bbmap
+python3 seq_tools/RNAseq/bbmap.py
+
+conda activate seqkit
+python3 seq_tools/RNAseq/seqkit.py
+
+conda activate bowtie
+python3 seq_tools/RNAseq/bowtie.py
+
+conda activate samtools
+python3 seq_tools/RNAseq/samtools.py
+
+conda activate subread
+python3 seq_tools/RNAseq/featurecounts.py

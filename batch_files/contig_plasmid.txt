@@ -1,0 +1,12 @@
+#!/bin/bash --login
+#$ -cwd
+
+#$ -l mem512 #gives 32GB memory
+#$ -pe smp.pe 8 #allocates 8 cores
+
+cd "/scratch/path/to/sequences"
+
+conda activate abricate
+python3 "seq_tools/annotation/abricate_plasmid.py"
+conda activate pandas
+python3 "seq_tools/contig_selection/contig_selector.py"

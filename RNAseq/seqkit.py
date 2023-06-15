@@ -5,8 +5,8 @@ import subprocess
 '''
 Requires seqkit to be installed and mapped to PATH to function
 Requires python3 to be installed and mapped to PATH to function
-<https://anaconda.org/>
-<https://github.com/>
+<https://anaconda.org/bioconda/seqkit>
+<https://github.com/shenwei356/seqkit>
 
 ##Instructions for use
 Run 'python3 ../path/to/seqkit.py' in directory containing 'fastq_trimmed_norRNA' and 'fastq_trimmed_rNA' directories, containing paired _1 and _2.fastq files.

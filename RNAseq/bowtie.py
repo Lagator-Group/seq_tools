@@ -8,8 +8,8 @@ from configparser import ConfigParser
 '''
 Requires bowtie to be installed and mapped to PATH to function
 Requires python3 to be installed and mapped to PATH to function
-<https://anaconda.org/>
-<https://github.com/>
+<https://anaconda.org/bioconda/bowtie>
+<https://github.com/BenLangmead/bowtie>
 
 ##Instructions for use
 Run 'python3 ../path/to/bowtie.py' in directory containing 'fastq_trimmed_norRNA' directory, containing paired _1 and _2.fastq.gz files.

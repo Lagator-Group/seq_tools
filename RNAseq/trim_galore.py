@@ -7,8 +7,8 @@ from configparser import ConfigParser
 '''
 Requires trim-galore to be installed and mapped to PATH to function
 Requires python3 to be installed and mapped to PATH to function
-<https://anaconda.org/>
-<https://github.com/>
+<https://anaconda.org/bioconda/trim-galore>
+<https://github.com/FelixKrueger/TrimGalore>
 
 ##Instructions for use
 Run 'python3 ../path/to/trim_galore.py' in directory containing .fastq files

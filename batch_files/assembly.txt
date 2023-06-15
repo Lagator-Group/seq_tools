@@ -4,14 +4,13 @@
 #$ -l mem512 #gives 32GB memory
 #$ -pe smp.pe 8 #allocates 8 cores
 
-seq_tools="/mnt/iusers01/path/to/seq_tools"
 cd "/scratch/path/to/sequences"
 
 conda activate filtlong
-python3 "${seq_tools}/filtlong/filtlong.py"
+python3 "seq_tools/filtlong/filtlong.py"
 conda activate unicycler
-python3 "${seq_tools}/unicycler/unicycler.py"
+python3 "seq_tools/unicycler/unicycler.py"
 conda activate raven
-python3 "${seq_tools}/raven/raven.py"
+python3 "seq_tools/raven/raven.py"
 conda activate flye
-python3 "${seq_tools}/flye/flye.py"
+python3 "seq_tools/flye/flye.py"

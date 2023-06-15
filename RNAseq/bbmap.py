@@ -12,7 +12,7 @@ Requires python3 to be installed and mapped to PATH to function
 ##Instructions for use
 Run 'python3 ../path/to/bbmap.py' in directory containing 'fastq_trimmed' directory, containing paired _1 and _2.fastq files.
 Download ribokmers from <https://drive.google.com/file/d/0B3llHR93L14wS2NqRXpXakhFaEk/view?resourcekey=0-2fgNHw3hAtPFCSjJSVV-UQ>
-and extract to ribokmers/ribokmers.fa
+and extract to seq_tools/ribokmers/ribokmers.fa
 
 Input: All paired .fastq files. File names must be marked with _1 and _2 for forward and reverse reads, respectively.
 Output: Trimmed sequences in 'fastq_trimmed_norRNA' directory.
@@ -21,7 +21,7 @@ Output: Trimmed sequences in 'fastq_trimmed_norRNA' directory.
 def main():
     n=0
 
-    ref='ribokmers/ribokmers.fa' #path to ribokmers.
+    ref='seq_tools/ribokmers/ribokmers.fa' #path to ribokmers.
 
     #creates necessary directories if not already present
     try: #removes directory if it exists already to prevent errors

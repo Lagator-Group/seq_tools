@@ -4,7 +4,7 @@
 #$ -l mem512 #gives 32GB memory
 #$ -pe smp.pe 8 #allocates 8 cores
 
-cd "/scratch/path/to/sequences"
+cd "/scratch/path/to/sequence/folder"
 
 conda activate filtlong
 python3 "seq_tools/filtlong/filtlong.py"

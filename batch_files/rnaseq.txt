@@ -4,6 +4,8 @@
 #$ -l mem512 #gives 32GB memory
 #$ -pe smp.pe 8 #allocates 8 cores
 
+cd path/to/sequence/folder
+
 conda activate trim-galore
 python3 seq_tools/RNAseq/trim_galore.py
 

@@ -6,8 +6,8 @@ import subprocess
 '''
 Requires bbmap to be installed and mapped to PATH to function
 Requires python3 to be installed and mapped to PATH to function
-<https://anaconda.org/>
-<https://github.com/>
+<https://anaconda.org/bioconda/bbmap>
+<https://sourceforge.net/projects/bbmap>
 
 ##Instructions for use
 Run 'python3 ../path/to/bbmap.py' in directory containing 'fastq_trimmed' directory, containing paired _1 and _2.fastq files.

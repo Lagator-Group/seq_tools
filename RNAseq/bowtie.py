@@ -8,12 +8,11 @@ from configparser import ConfigParser
 '''
 Requires bowtie to be installed and mapped to PATH to function
 Requires python3 to be installed and mapped to PATH to function
-<https://anaconda.org/bioconda/bowtie>
-<https://github.com/BenLangmead/bowtie>
+<https://anaconda.org/bioconda/bowtie2>
+<https://github.com/BenLangmead/bowtie2>
 
 ##Instructions for use
 Run 'python3 ../path/to/bowtie.py' in directory containing 'fastq_trimmed_norRNA' directory, containing paired _1 and _2.fastq.gz files.
-Adjust thread number according to PC specs.
 Download reference genome from NCBI and paste 'GCF###.fna' and 'genomic.gtf' files in directory containing original .fastq files
 Adjust strain name depending on reference genome.
 

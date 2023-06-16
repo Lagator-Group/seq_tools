@@ -2,7 +2,6 @@
 
 import os
 import pandas as pd
-import subprocess
 
 def get_contig(tab):
     df=pd.read_csv(tab,sep='\t',usecols=['#FILE','SEQUENCE']) #opens tab file as pd.df
@@ -23,7 +22,7 @@ def get_contig(tab):
             else:
                 contig_directory='contigs' #else just creates contig folder
             if not os.path.isdir(contig_directory):
-                subprocess.call('mkdir '+contig_directory,shell=True) 
+                os.mkdir(contig_directory)
 
             _fname=str(df['#FILE'][n])[:-15]
             fname=_fname+'_'+str(df['SEQUENCE'][n])+'.fasta' #final file name example = 0flye_contig_1.fasta

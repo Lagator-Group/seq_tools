@@ -3,6 +3,7 @@
 import glob
 import os
 import subprocess
+import shutil
 
 '''
 Requires abricate to be installed and mapped to PATH to function
@@ -23,24 +24,31 @@ def main():
     tab_list=[]
 
     for fasta in assembly:
-        name=fasta[:-15]+'.tab'
-        tab_path='abricate_plasmid/'+name
-        tab_list.append(tab_path)
-        print(name)
+        try:
+            name=fasta[:-15]+'.tab'
+            tab_path='abricate_plasmid/'+name
+            tab_list.append(tab_path)
+            print(name)
 
-        try: #removes existing directory to prevent errors
-            os.rmdir('abricate_plasmid')
+            try: #removes existing directory to prevent errors
+                shutil.rmtree('abricate_plasmid')
+            except:
+                os.mkdir('abricate_plasmid')
+
+            abricate='abricate -db plasmidfinder '+fasta+' > abricate_plasmid/'+name
+            print(abricate)
+            subprocess.call(abricate,shell=True)
         except:
-            os.mkdir('abricate_plasmid')
-
-        abricate='abricate -db plasmidfinder '+fasta+' > abricate_plasmid/'+name
-        print(abricate)
-        subprocess.call(abricate,shell=True)
-
-    tab_string=" ".join(tab_list)
-    summary='abricate --summary '+tab_string+'> abricate_plasmid/summary.tab'
-    print(summary)
-    subprocess.call(summary,shell=True)
+            print('Something went wrong running abricate on'+fasta)
+            continue
+    
+    try:
+        tab_string=" ".join(tab_list)
+        summary='abricate --summary '+tab_string+'> abricate_plasmid/summary.tab'
+        print(summary)
+        subprocess.call(summary,shell=True)
+    except:
+        print('Something went wrong running abricate --summary')
 
 if __name__=="__main__":
     main()

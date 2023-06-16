@@ -3,6 +3,7 @@
 import subprocess
 import os
 from configparser import ConfigParser
+import shutil
 
 '''
 Requires raven to be installed and mapped to PATH to function
@@ -34,11 +35,20 @@ def main():
 
     n=0
     for seq in long_list:
-        os.mkdir(str(n)+'raven')
-        raven='raven --threads '+str(threads)+' +seq+ > '+str(n)+'raven/assembly.fasta'
-        print(raven)
-        subprocess.call(raven,shell=True)
-        n=n+1             
+        folder=str(n)+'raven'
+        try:
+            try:
+                shutil.rmtree(folder)
+            except:
+                os.mkdir(folder)
+            raven='raven --threads '+str(threads)+' +seq+ > '+str(n)+'raven/assembly.fasta'
+            print(raven)
+            subprocess.call(raven,shell=True)
+        except:
+            print('Something went wrong running raven on'+seq)
+            continue
+        finally:
+            n=n+1             
 
 if __name__ == "__main__":
     main()

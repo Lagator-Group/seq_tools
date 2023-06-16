@@ -24,10 +24,9 @@ threads=sys_specs['threads']
 
 def bam():
     try:
-        shutil.rmtree('/BAM')
+        shutil.rmtree('BAM')
     except:
-        pass
-    os.mkdir('BAM')
+        os.mkdir('BAM')
 
     for sam in os.listdir('Bowtie2_SAM'):
         try:
@@ -41,10 +40,9 @@ def bam():
 
 def sort():
     try:
-        shutil.rmtree('/BAM_sorted')
+        shutil.rmtree('BAM_sorted')
     except:
-        pass
-    os.mkdir('BAM_sorted')
+        os.mkdir('BAM_sorted')
 
     for bam in os.listdir('BAM'):
         try:

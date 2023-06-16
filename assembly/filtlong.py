@@ -30,10 +30,14 @@ def main():
     os.mkdir('pre_filtlong')
     
     for seq in long_list:
-        shutil.move(seq,'pre_filtlong/')
-        filtlong='filtlong --min_length 1000 --keep_percent 95 --target_bases 500000000 pre_filtlong/'+seq+' | gzip > '+seq+'.gz'
-        print(filtlong)
-        subprocess.call(filtlong,shell=True)
+        try:
+            shutil.move(seq,'pre_filtlong/')
+            filtlong='filtlong --min_length 1000 --keep_percent 95 --target_bases 500000000 pre_filtlong/'+seq+' | gzip > '+seq+'.gz'
+            print(filtlong)
+            subprocess.call(filtlong,shell=True)
+        except:
+            print('Something went wrong running filtlong on '+seq)
+            continue
     
 if __name__ == "__main__":
     if os.path.isdir('pre_filtlong'):

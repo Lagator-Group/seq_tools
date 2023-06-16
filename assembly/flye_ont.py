@@ -33,11 +33,16 @@ def main():
                 long_list.append(seq)
     n=0
     for seq in long_list:
-        seq=long_list[n]
-        flye='flye -o '+str(n)+'flye --threads '+str(threads)+' --nano-raw '+seq #assumes it is reading raw nanopore reads
-        print(flye)
-        subprocess.call(flye,shell=True)                
-        n=n+1
+        try:
+            seq=long_list[n]
+            flye='flye -o '+str(n)+'flye --threads '+str(threads)+' --nano-raw '+seq #assumes it is reading raw nanopore reads
+            print(flye)
+            subprocess.call(flye,shell=True)                
+        except:
+            print('Something went wrong running flye on '+seq)
+            continue
+        finally:
+            n=n+1 
 
 if __name__ == "__main__":
     main()

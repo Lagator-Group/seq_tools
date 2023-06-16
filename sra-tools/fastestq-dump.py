@@ -35,15 +35,22 @@ def main():
             sra_list.append(line)
     
     for sra in sra_list:
-        print('Prefetching .sra for '+sra) #Prefetching first before running fasterq-dump is faster than fasterq-dump alone.
-        prefetch='prefetch '+sra
-        print(prefetch)
-        subprocess.call(prefetch,shell=True)
-
-        print('Generating fastq for '+sra)
-        fasterq_dump='fasterq-dump --threads '+str(threads)+' --mem '+str(memory)+'GB '+sra 
-        print(fasterq_dump)
-        subprocess.call(fasterq_dump,shell=True)
+        try:
+            print('Prefetching .sra for '+sra) #Prefetching first before running fasterq-dump is faster than fasterq-dump alone.
+            prefetch='prefetch '+sra
+            print(prefetch)
+            subprocess.call(prefetch,shell=True)
+        except:
+            print('There was an error prefetching '+sra)
+            continue
+        try:
+            print('Generating fastq for '+sra)
+            fasterq_dump='fasterq-dump --threads '+str(threads)+' --mem '+str(memory)+'GB '+sra 
+            print(fasterq_dump)
+            subprocess.call(fasterq_dump,shell=True)
+        except:
+            print('There was error generating .fastq file for'+sra)
+            continue
             
     for sra in sra_list:
         os.rmdir(sra)

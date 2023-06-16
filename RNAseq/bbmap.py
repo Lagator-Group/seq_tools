@@ -24,14 +24,10 @@ def main():
 
     #creates necessary directories if not already present
     try: #removes directory if it exists already to prevent errors
-        shutil.rmtree('/fastQ_trimmed_norRNA')
-        shutil.rmtree('/fastQ_trimmed_rRNA')
+        shutil.rmtree('fastQ_trimmed_norRNA')
+        shutil.rmtree('fastQ_trimmed_rRNA')
     except:
-        pass
-
-    if not os.path.isdir('fastQ_trimmed_norRNA'):
         os.mkdir('fastQ_trimmed_norRNA')
-    if not os.path.isdir('fastQ_trimmed_rRNA'):
         os.mkdir('fastQ_trimmed_rRNA')
     
     seq_list=[]

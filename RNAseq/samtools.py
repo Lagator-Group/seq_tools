@@ -3,6 +3,7 @@
 import os
 import subprocess
 from configparser import ConfigParser
+import shutil
 '''
 Requires samtools to be installed and mapped to PATH to function
 Requires python3 to be installed and mapped to PATH to function
@@ -23,36 +24,55 @@ threads=sys_specs['threads']
 
 def bam():
     try:
-        os.mkdir('BAM')
+        shutil.rmtree('/BAM')
     except:
         pass
+    os.mkdir('BAM')
 
     for sam in os.listdir('Bowtie2_SAM'):
-        bam=sam.replace('.sam','')
-        samtools='samtools view -bS Bowtie2_SAM/'+sam+' -@ '+str(threads)+' > BAM/'+bam+'.bam'
-        print(samtools)
-        subprocess.call(samtools,shell=True)
+        try:
+            bam=sam.replace('.sam','')
+            samtools='samtools view -bS Bowtie2_SAM/'+sam+' -@ '+str(threads)+' > BAM/'+bam+'.bam'
+            print(samtools)
+            subprocess.call(samtools,shell=True)
+        except:
+            print('Something went wrong running samtools view on '+sam)
+            continue
 
 def sort():
     try:
-        os.mkdir('BAM_sorted')
+        shutil.rmtree('/BAM_sorted')
     except:
         pass
+    os.mkdir('BAM_sorted')
+
     for bam in os.listdir('BAM'):
-        _sorted=bam.replace('.bam','_sorted.bam')
-        sort='samtools sort BAM/'+bam+' -@ '+str(threads)+' -o BAM_sorted/'+_sorted
-        print(sort)
-        subprocess.call(sort,shell=True)
+        try:
+            _sorted=bam.replace('.bam','_sorted.bam')
+            sort='samtools sort BAM/'+bam+' -@ '+str(threads)+' -o BAM_sorted/'+_sorted
+            print(sort)
+            subprocess.call(sort,shell=True)
+        except:
+            print('Something went wrong running samtools sort on'+bam)
+            continue
 
 def index():
     sorted_list=[]
     for file in os.listdir():
-        if file.endswith('_sorted.bam'):
-            sorted_list.append(file)
+        try:
+            if file.endswith('_sorted.bam'):
+                sorted_list.append(file)
+        except:
+            print('There are _sorted.bam files to sort')
+            continue
     for _sorted in sorted_list:
-        _index='samtools index BAM_sorted/'+_sorted+' -@ '+str(threads)
-        print(_index)
-        subprocess.call(_index,shell=True)
+        try:
+            _index='samtools index BAM_sorted/'+_sorted+' -@ '+str(threads)
+            print(_index)
+            subprocess.call(_index,shell=True)
+        except:
+            print('Something went wrong runnning samtools index on '+_sorted)
+            continue
 
 if __name__ == "__main__":
     bam()

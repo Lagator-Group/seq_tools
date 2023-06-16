@@ -21,9 +21,13 @@ sys_specs=config['sys_specs']
 threads=sys_specs['threads']
 
 def main():
-    featurecounts='featureCounts -a genomic.gtf -p -T '+str(threads)+' -t CDS -g gene_id -o featureCounts_table.txt BAM_sorted/*.bam'
-    print(featurecounts)
-    subprocess.call(featurecounts,shell=True)
+    try:
+        featurecounts='featureCounts -a genomic.gtf -p -T '+str(threads)+' -t CDS -g gene_id -o featureCounts_table.txt BAM_sorted/*.bam'
+        print(featurecounts)
+        subprocess.call(featurecounts,shell=True)
+    except:
+        print('Something went wrong running featureCounts')
+        pass
 
 if __name__ == "__main__":
     main()

@@ -3,7 +3,7 @@
 import subprocess
 import os
 from configparser import ConfigParser
-
+import shutil
 '''
 Require sra-tools to be installed and mapped to PATH to function
 Requires python3 to be installed and mapped to PATH to function
@@ -53,7 +53,7 @@ def main():
             continue
             
     for sra in sra_list:
-        os.rmdir(sra)
+        shutil.rmtree(sra)
 
 if __name__ == "__main__":
     main()

@@ -2,6 +2,7 @@
 
 import subprocess
 from configparser import ConfigParser
+import os
 '''
 Requires subread to be installed and mapped to PATH to function
 Requires python3 to be installed and mapped to PATH to function
@@ -21,8 +22,11 @@ sys_specs=config['sys_specs']
 threads=sys_specs['threads']
 
 def main():
+    for file in os.listdir():
+        if file.endswith('.gtf'):
+            gtf=file
     try:
-        featurecounts='featureCounts -a genomic.gtf -p -T '+str(threads)+' -t CDS -g gene_id -o featureCounts_table.txt BAM_sorted/*.bam'
+        featurecounts='featureCounts -a '+gtf+' -p -T '+str(threads)+' -t CDS -g gene_id -o featureCounts_table.txt BAM_sorted/*.bam'
         print(featurecounts)
         subprocess.call(featurecounts,shell=True)
     except:

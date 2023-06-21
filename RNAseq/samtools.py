@@ -26,7 +26,8 @@ def bam():
     try:
         shutil.rmtree('BAM')
     except:
-        os.mkdir('BAM')
+        pass
+    os.mkdir('BAM')
 
     for sam in os.listdir('Bowtie2_SAM'):
         try:
@@ -42,7 +43,8 @@ def sort():
     try:
         shutil.rmtree('BAM_sorted')
     except:
-        os.mkdir('BAM_sorted')
+        pass
+    os.mkdir('BAM_sorted')
 
     for bam in os.listdir('BAM'):
         try:
@@ -61,7 +63,7 @@ def index():
             if file.endswith('_sorted.bam'):
                 sorted_list.append(file)
         except:
-            print('There are _sorted.bam files to sort')
+            print('There are no _sorted.bam files to sort')
             continue
     for _sorted in sorted_list:
         try:

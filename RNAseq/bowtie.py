@@ -57,7 +57,8 @@ def sam():
     try:
         shutil.rmtree('Bowtie2_SAM') #removes if it already exists to prevent errors
     except:
-        os.mkdir('Bowtie2_SAM')
+        pass
+    os.mkdir('Bowtie2_SAM')
 
     fastq=[]
     for file in os.listdir('fastQ_trimmed_norRNA'):

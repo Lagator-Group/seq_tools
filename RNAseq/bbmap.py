@@ -27,8 +27,9 @@ def main():
         shutil.rmtree('fastQ_trimmed_norRNA')
         shutil.rmtree('fastQ_trimmed_rRNA')
     except:
-        os.mkdir('fastQ_trimmed_norRNA')
-        os.mkdir('fastQ_trimmed_rRNA')
+        pass
+    os.mkdir('fastQ_trimmed_norRNA')
+    os.mkdir('fastQ_trimmed_rRNA')
     
     seq_list=[]
     for seq in os.listdir(): 

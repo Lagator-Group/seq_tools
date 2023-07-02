@@ -2,6 +2,9 @@
 
 #run by executing "bash -i setup.sh"
 
+#pandas
+conda install -c conda-forge pandas
+
 #filtlong
 conda create -n filtlong -c bioconda filtlong
 
@@ -16,9 +19,6 @@ conda create -n raven -c bioconda raven-assembler
 
 #abricate
 conda create -n abricate -c bioconda abricate
-
-#pandas
-conda create -n pandas -c conda-forge pandas
 
 #trim-galore
 conda create -n trim-galore -c bioconda trim-galore

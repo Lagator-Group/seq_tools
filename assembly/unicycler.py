@@ -75,13 +75,14 @@ def main():
             elif '_2' not in seq:
                 short_list.append(seq)
 
-    if len(short_list)>0:
-        unicycler.short(short_list)  
-    if len(long_list)>0:
-        unicycler.long(long_list)
+
     if len(short_list)==len(long_list): #will only run hybrid assembly if there are exactly the number of short_1 and long reads
         unicycler.hybrid(short_list,long_list)
-
+    else:
+        if len(short_list)>0:
+            unicycler.short(short_list)  
+        if len(long_list)>0:
+            unicycler.long(long_list)
 
 if __name__ == "__main__":
     main()

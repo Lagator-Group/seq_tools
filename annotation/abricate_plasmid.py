@@ -23,17 +23,18 @@ def main():
     print(assembly)
     tab_list=[]
 
+    try: #removes existing directory to prevent errors
+        shutil.rmtree('abricate_plasmid')
+    except:
+        pass
+    os.mkdir('abricate_plasmid')
+
     for fasta in assembly:
         try:
             name=fasta[:-15]+'.tab'
             tab_path='abricate_plasmid/'+name
             tab_list.append(tab_path)
             print(name)
-
-            try: #removes existing directory to prevent errors
-                shutil.rmtree('abricate_plasmid')
-            except:
-                os.mkdir('abricate_plasmid')
 
             abricate='abricate -db plasmidfinder '+fasta+' > abricate_plasmid/'+name
             print(abricate)

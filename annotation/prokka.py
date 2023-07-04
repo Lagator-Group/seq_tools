@@ -12,6 +12,11 @@ def prokka(file):
     name=file.replace('.fasta','')
     folder='prokka_plasmid_'+name
 
+    try:
+        shutil.rmtree(folder)
+    except:
+        pass
+
     prokka='prokka --outdir '+folder+' --prefix '+name+' '+file
     subprocess.call(prokka,shell=True)
 

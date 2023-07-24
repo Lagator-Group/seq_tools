@@ -31,3 +31,6 @@ conda create -n samtools -c bioconda samtools=1.9
 
 #subreads
 conda create -n subread -c bioconda subread
+
+#prokka
+conda create -n prokka -c conda-forge -c bioconda -c defaults prokka

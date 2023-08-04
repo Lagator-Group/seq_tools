@@ -14,7 +14,7 @@ Before starting, open the ```config.ini``` file and change the values to match w
 ### Assemble and Isolate Plasmid Contigs
 Copy the folder ```seq_tools``` to the folder containing the sequence files and run the following:
 ```
-bash -i seq_tools/assembly_plasmid.sh ; bash -i seq_tools/contig_plasmid.sh
+bash -i seq_tools/assembly_plasmid.sh
 ```
 
 ### RNAseq

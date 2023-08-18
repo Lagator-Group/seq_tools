@@ -20,7 +20,7 @@ Output: Trimmed sequences in 'fastq_trimmed_norRNA' directory.
 def main():
     n=0
 
-    ref='seq_tools/ribokmers/ribokmers.fa' #path to ribokmers.
+    ref='seq_tools/bin/ribokmers.fa' #path to ribokmers.
 
     #creates necessary directories if not already present
     try: #removes directory if it exists already to prevent errors

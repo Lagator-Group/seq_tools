@@ -7,19 +7,19 @@
 cd path/to/sequence/folder
 
 conda activate trim-galore
-python3 seq_tools/RNAseq/trim_galore.py
+python3 seq_tools/bin/trim_galore.py
 
 conda activate bbmap
-python3 seq_tools/RNAseq/bbmap.py
+python3 seq_tools/bin/bbmap.py
 
 conda activate seqkit
-python3 seq_tools/RNAseq/seqkit.py
+python3 seq_tools/bin/seqkit.py
 
 conda activate bowtie
-python3 seq_tools/RNAseq/bowtie.py
+python3 seq_tools/bin/bowtie.py
 
 conda activate samtools
-python3 seq_tools/RNAseq/samtools.py
+python3 seq_tools/bin/samtools.py
 
 conda activate subread
-python3 seq_tools/RNAseq/featurecounts.py
+python3 seq_tools/bin/featurecounts.py

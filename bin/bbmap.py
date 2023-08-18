@@ -4,19 +4,6 @@ import os
 import subprocess
 import shutil
 
-'''
-Requires bbmap to be installed and mapped to PATH to function
-Requires python3 to be installed and mapped to PATH to function
-<https://anaconda.org/bioconda/bbmap>
-<https://sourceforge.net/projects/bbmap>
-
-##Instructions for use
-Run 'python3 ../path/to/bbmap.py' in directory containing 'fastq_trimmed' directory, containing paired _1 and _2.fastq files.
-
-Input: All paired .fastq files. File names must be marked with _1 and _2 for forward and reverse reads, respectively.
-Output: Trimmed sequences in 'fastq_trimmed_norRNA' directory.
-'''
-
 def main():
     n=0
 

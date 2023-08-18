@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#run by executing "bash -i ngs_setup.sh"
+#run by executing "bash -i ngs_uninstall.sh"
 
 #filtlong
 conda remove -n filtlong --all

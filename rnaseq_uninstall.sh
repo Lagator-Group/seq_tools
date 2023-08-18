@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#run by executing "bash -i rnaseq_setup.sh"
+#run by executing "bash -i rnaseq_uninstall.sh"
 
 #trim-galore
 conda remove -n trim-galore --all

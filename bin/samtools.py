@@ -4,18 +4,7 @@ import os
 import subprocess
 from configparser import ConfigParser
 import shutil
-'''
-Requires samtools to be installed and mapped to PATH to function
-Requires python3 to be installed and mapped to PATH to function
-<https://anaconda.org/bioconda/samtools>
-<https://github.com/samtools/samtools>
 
-##Instructions for use
-Run 'python3 ../path/to/samtools.py' in directory containing Bowtie2_SAM directory, containing '.sam' files.
-
-Input: .sam files
-Output: .bam files in BAM_sorted directory
-'''
 config=ConfigParser()
 config.read('seq_tools/config.ini')
 

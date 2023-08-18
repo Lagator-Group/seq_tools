@@ -3,21 +3,6 @@
 import subprocess
 import os
 
-'''
-Require unicycler to be installed and mapped to PATH to function
-Requires python3 to be installed and mapped to PATH to function
-Will work with either short or long reads
-If there are 2 short reads and 1 long read, will assume they are matched and also perform hybrid assembly
-<https://anaconda.org/bioconda/unicycler>
-<https://github.com/rrwick/Unicycler>
-
-##Instructions for use
-Run 'python3 ../path/to/unicycler.py' in directory containing .fastq or filtlong/
-For long read, '_' cannot be in file name
-
-Input: All .fastq or fastq.gz in current directory. If filtlong/ in directory, will search sequences inside
-Output: Folder(s) in current directory. If there is a filtlong/ directory, results will be in that directory
-'''
 filtlong=[]
 
 class unicycler:

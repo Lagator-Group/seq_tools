@@ -4,10 +4,6 @@ import os
 import subprocess
 import shutil
 
-'''
-currently doesnt work on UoM CSF. issue with prokka and blastp
-'''
-
 def prokka(file):
     name=file.replace('.fasta','')
     folder='prokka_plasmid_'+name

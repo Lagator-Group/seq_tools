@@ -4,19 +4,6 @@ import subprocess
 import os
 import shutil
 
-'''
-Require filtlong to be installed and mapped to PATH to function
-Requires python3 to be installed and mapped to PATH to function
-<https://anaconda.org/bioconda/filtlong>
-<https://github.com/rrwick/Filtlong>
-
-##Instructions for use
-Run 'python3 ../path/to/filtlong_all.py' in directory cotanining .fastq files.
-
-Input: All .fastq files in current directory
-Output: fastq.gz in filtlong/ directory
-'''
-
 def main():
     long_list=[]
     for seq in os.listdir(): 

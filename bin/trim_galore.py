@@ -4,20 +4,6 @@ import os
 import subprocess
 from configparser import ConfigParser
 
-'''
-Requires trim-galore to be installed and mapped to PATH to function
-Requires python3 to be installed and mapped to PATH to function
-<https://anaconda.org/bioconda/trim-galore>
-<https://github.com/FelixKrueger/TrimGalore>
-
-##Instructions for use
-Run 'python3 ../path/to/trim_galore.py' in directory containing .fastq files
-Adjust core number based on machine running the code.
-
-Input: All paired .fastq files. File names must be marked with _1 and _2 for forward and reverse reads.
-Output: Trimmed sequences in fastq_trimmed directory.
-'''
-
 config=ConfigParser()
 config.read('seq_tools/config.ini')
 

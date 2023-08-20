@@ -19,3 +19,5 @@ conda remove -n samtools --all
 
 #subread
 conda remove -n subread --all
+
+echo "done"

@@ -19,3 +19,5 @@ conda env create -f env/abricate.yml
 
 #prokka
 conda env create -f env/prokka.yml
+
+echo "done" 

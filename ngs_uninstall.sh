@@ -16,3 +16,5 @@ conda remove -n abricate --all
 
 #prokka
 conda remove -n prokka --all
+
+echo "done

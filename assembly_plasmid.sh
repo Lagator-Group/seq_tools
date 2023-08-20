@@ -17,3 +17,5 @@ python3 "seq_tools/bin/contig_selector.py"
 
 conda activate prokka
 python3 "seq_tools/bin/prokka.py"
+
+echo "done"

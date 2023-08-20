@@ -20,3 +20,5 @@ python3 seq_tools/bin/samtools.py
 
 conda activate subread
 python3 seq_tools/bin/featurecounts.py
+
+echo "done"

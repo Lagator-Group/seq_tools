@@ -5,17 +5,9 @@ import os
 from configparser import ConfigParser
 import shutil
 '''
-Require sra-tools to be installed and mapped to PATH to function
-Requires python3 to be installed and mapped to PATH to function
-<https://anaconda.org/bioconda/sra-tools>
-<https://github.com/ncbi/sra-tools/wiki>
-
 ##Instructions for use
 SRR_Acc_List.txt must 1 contain SRR code per line.
 Run 'python3 ../path/to/fastestq-dump.py' in directory containing SRR_Acc_List.txt
-
-Input: SRR## in SRR_Acc_List.txt
-Output: .fastq files in current directory
 '''
 config=ConfigParser()
 config.read('seq_tools/config.ini')

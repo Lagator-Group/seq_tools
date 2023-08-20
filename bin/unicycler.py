@@ -60,7 +60,6 @@ def main():
             elif '_2' not in seq:
                 short_list.append(seq)
 
-
     if len(short_list)==len(long_list): #will only run hybrid assembly if there are exactly the number of short_1 and long reads
         unicycler.hybrid(short_list,long_list)
     else:

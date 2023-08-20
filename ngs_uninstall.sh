@@ -2,6 +2,9 @@
 
 #run by executing "bash -i ngs_uninstall.sh"
 
+#sra
+conda remove -n sra --all
+
 #filtlong
 conda remove -n filtlong --all
 

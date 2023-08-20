@@ -5,6 +5,9 @@
 #pandas
 conda install -c conda-forge pandas
 
+#sra
+conda env create -f env/sra.yml
+
 #filtlong
 conda env create -f env/filtlong.yml
 

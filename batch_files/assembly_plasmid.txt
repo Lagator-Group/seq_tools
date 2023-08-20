@@ -19,4 +19,4 @@ conda activate base
 python3 "seq_tools/bin/contig_selector.py"
 
 conda activate prokka
-python3 "seq_tools/bin/prokka.py"
+python3 "seq_tools/bin/prokka.py" #currently doesn't work on the UoM CSF. Need to download the assemblies and annotate locally...
